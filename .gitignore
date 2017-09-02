@@ -1,0 +1,12 @@
+# editor or IDE
+.idea
+
+# dependent modules
+node_modules
+elm-stuff
+
+# artifacts
+dist
+
+# OSX
+.DS_Store

@@ -1,0 +1,61 @@
+{
+  "name": "electron-elm",
+  "productName": "Electron Elm",
+  "version": "0.1.0",
+  "description": "The boilerplate for cross-platform desktop applications built with elm.",
+  "main": "n/a",
+  "scripts": {
+    "setup": "yarn install && elm package install -y",
+    "clean": "rimraf dist",
+    "clean-all": "rimraf dist node_modules elm-stuff",
+    "build": "concurrently \"npm run build-main\" \"npm run build-renderer\"",
+    "rebuild": "npm run clean && npm run build",
+    "clean-build": "npm run clean-all && npm run setup && npm run build",
+    "build-main": "cross-env NODE_ENV=production node --trace-warnings -r babel-register $(npm bin)/webpack --config webpack.config.main.js --colors",
+    "build-renderer": "cross-env NODE_ENV=production node --trace-warnings -r babel-register $(npm bin)/webpack --config webpack.config.renderer.js --colors",
+    "prestart": "npm run build",
+    "start": "electron ./dist",
+    "dev": "cross-env START_DEV_SERVER=1 npm run dev-renderer",
+    "dev-main": "cross-env HMR=1 NODE_ENV=development electron -r babel-register ./src/main",
+    "dev-renderer": "cross-env NODE_ENV=development node --trace-warnings -r babel-register $(npm bin)/webpack-dev-server --config webpack.config.renderer.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/henninltn/electron-elm.git"
+  },
+  "author": {
+    "name": "hennin",
+    "email": "hennin.ltn@gmail.com",
+    "url": "https://github.com/henninltn"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/henninltn/electron-elm/issues"
+  },
+  "homepage": "https://github.com/henninltn/electron-elm#readme",
+  "dependencies": {
+    "devtron": "^1.4.0",
+    "electron-debug": "^1.4.0",
+    "source-map-support": "^0.4.16"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-dev-expression": "^0.2.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-minify": "^0.2.0",
+    "babel-register": "^6.26.0",
+    "concurrently": "^3.5.0",
+    "copy-pkg-json-webpack-plugin": "^0.0.29",
+    "cross-env": "^5.0.5",
+    "electron": "^1.7.5",
+    "elm-webpack-loader": "^4.3.1",
+    "html-loader": "^0.5.1",
+    "html-webpack-plugin": "^2.30.1",
+    "rimraf": "^2.6.1",
+    "webpack": "^3.5.5",
+    "webpack-dev-middleware": "^1.12.0",
+    "webpack-dev-server": "^2.7.1"
+  }
+}
