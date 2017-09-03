@@ -42,7 +42,7 @@ export default class MenuBuilder {
 
   buildDarwinTemplate() {
     const subMenuAbout = {
-      label: 'Electron',
+      label: 'Electron Elm',
       submenu: [
         { label: 'About Electron Elm', selector: 'orderFrontStandardAboutPanel:' },
         { type: 'separator' },
@@ -58,13 +58,13 @@ export default class MenuBuilder {
     const subMenuFile = {
       label: 'File',
       submenu: [
-        { label: 'New', accelerator: 'Command+N', click: () => { this.mainWindow.webContents.send('note-new') } },
+        { label: 'New', accelerator: 'Command+N', click: () => { this.mainWindow.webContents.send('new') } },
         { type: 'separator' },
-        { label: 'Open', accelerator: 'Command+O', click: () => { this.mainWindow.webContents.send('note-open') } },
+        { label: 'Open', accelerator: 'Command+O', click: () => { this.mainWindow.webContents.send('open') } },
         { type: 'separator' },
-        { label: 'Save', accelerator: 'Command+S', click: () => { this.mainWindow.webContents.send('note-save') } },
-        { label: 'Save as', accelerator: 'Command+Shift+S', click: () => { this.mainWindow.webContents.send('note-save-as') } },
-        { label: 'Save all', accelerator: 'Command+Option+S', click: () => { this.mainWindow.webContents.send('note-save-all') } }
+        { label: 'Save', accelerator: 'Command+S', click: () => { this.mainWindow.webContents.send('save') } },
+        { label: 'Save as', accelerator: 'Command+Shift+S', click: () => { this.mainWindow.webContents.send('save-as') } },
+        { label: 'Save all', accelerator: 'Command+Option+S', click: () => { this.mainWindow.webContents.send('save-all') } }
       ]
     }
     const subMenuEdit = {
@@ -168,25 +168,25 @@ export default class MenuBuilder {
       }]
     }, {
       label: 'Help',
-      submenu: [{
+      submenu: [/*{
         label: 'Learn More',
         click() {
           shell.openExternal('http://electron.atom.io')
         }
-      }, {
+      }, */{
         label: 'Documentation',
         click() {
-          shell.openExternal('https://github.com/atom/electron/tree/master/docs#readme')
+          shell.openExternal('https://github.com/henninltn/electron-elm#readme')
         }
-      }, {
+      }, /*{
         label: 'Community Discussions',
         click() {
           shell.openExternal('https://discuss.atom.io/c/electron')
         }
-      }, {
+      }, */{
         label: 'Search Issues',
         click() {
-          shell.openExternal('https://github.com/atom/electron/issues')
+          shell.openExternal('https://github.com/henninltn/electron-elm/issues')
         }
       }]
     }]

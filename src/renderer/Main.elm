@@ -35,14 +35,6 @@ view model =
       [ tachyons.css
       , Icon.check_circle
       , text model ]
-{-
-view model =
-    div [ classes [ f1, purple ] ]
-        [ tachyons.css
-        , text model
-        ]
--}
-
 
 
 
